@@ -6,9 +6,14 @@ export const StyledSelectedCharacterPanel = styled.div`
     position: relative; 
 
 
+    img {
+        max-width: 100%; 
+        margin: 0 auto;
+        display: block;
+    }
     .description {
         margin: 8px 32px;
-        br
+        
     }
 
     button {
@@ -33,11 +38,12 @@ export const StyledSelectedCharacterPanel = styled.div`
         background-color: ${COLOR_BLACK}; 
         color: ${COLOR_WHITE_2}; 
         margin: 8px; 
-        padding: 8px 16px; 
+        padding: 8px 64px; 
         position: relative; 
         li {
             text-align: left;
         }
+
 
 
         //https://stackoverflow.com/questions/7324722/cut-corners-using-css
@@ -63,6 +69,9 @@ export const StyledSelectedCharacterPanel = styled.div`
     }
 
     .see-also {
+
+        margin-left: 32px;
+
         a {
             display: block; 
             color: ${COLOR_WHITE};

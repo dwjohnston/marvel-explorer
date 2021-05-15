@@ -14,7 +14,7 @@ export const Home = (props: HomeProps) => {
 
     const {selectedCharacter} = useMarvelCharacterState();
     return <StyledHome>
-        <div>
+        <div className ="main">
         <CharacterListing className = {!!selectedCharacter ? "character-selected" : ''}/>
         <SelectedCharacterPanel className = {!!selectedCharacter ? "character-selected" : ''}/>
         </div>

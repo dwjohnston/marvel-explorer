@@ -20,23 +20,21 @@ export const CharacterListing = (props: CharacterListingProps) => {
     const [requestOffset, setRequestOffset] = useState(0);
 
     useAsyncEffect(async () => {
-        const result = await fetchCharacters();
-
-        const characters = result.data.results;
-        console.log(result);
-        addCharacters(characters);
-        setRequestOffset(result.data.offset + result.data.count);
-
-
+        loadMoreCharacters();
     }, []);
 
 
-    const handleLoadMoreClick = async () => {
+    const loadMoreCharacters = async () => {
         const result = await fetchCharacters(requestOffset); 
         const characters = result.data.results;
 
         addCharacters(characters);
         setRequestOffset(result.data.offset + result.data.count);
+    }
+
+
+    const handleLoadMoreClick = () => {
+        loadMoreCharacters();
     }
 
     const charactersToUse = Object.values(characters).filter((v) => {
