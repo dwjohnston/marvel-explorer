@@ -4,9 +4,35 @@ import { COLOR_BLACK, COLOR_WHITE } from '../../theme/theme';
 export const StyledCharacterCard = styled.div`
     
     width: 300px; 
-    height: 300px;
-    background: linear-gradient(to bottom right, ${COLOR_BLACK} 95%, transparent 95%);
+    border: dashed 1px red; 
+.top-bar, .bottom-bar {
+        height: 24px; 
+        transform: skewX(-30deg);
+        background: ${COLOR_BLACK};    
 
+
+
+    }
+
+    .body {
+        background: ${COLOR_BLACK};
+        color: ${COLOR_WHITE}; 
+
+        height: 100px;
+        margin: 0 14px; 
+    }
+
+
+
+    .top-bar {
+        margin-left: 21px; 
+        margin-right: 7px; 
+
+    }
+    .bottom-bar {
+        margin-left: 7px;
+        margin-right: 21px; 
+    }
 
 `;
 
