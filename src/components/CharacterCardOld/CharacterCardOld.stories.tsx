@@ -1,16 +1,16 @@
 import React from 'react';
-import {  CharacterCard } from './CharacterCardOld';
+import {  CharacterCardOld } from './CharacterCardOld';
 
 export const Default = () => {
   return (
     <>
-      <CharacterCard />
+      <CharacterCardOld />
     </>
   );
 };
 
 export default {
-  component: CharacterCard,
+  component: CharacterCardOld,
   title: 'Components/CharacterCardOld',
   parameters: {
   },

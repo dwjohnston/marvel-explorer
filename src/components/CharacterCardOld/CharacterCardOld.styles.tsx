@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLOR_BLACK, COLOR_WHITE } from '../../theme/theme';
 
-export const StyledCharacterCard = styled.div`
+export const StyledCharacterCardOld = styled.div`
     
     width: 300px; 
     border: dashed 1px red; 

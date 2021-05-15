@@ -5,6 +5,7 @@ import useAsyncEffect from "use-async-effect";
 import { MarvelCharacterStateProvider } from './components/Providers/MarvelStateProvider';
 import { fetchCharacters } from './serviceFunctions/fetchCharacters';
 import { CharacterListing } from './components/ChararcterListing/CharacterListing';
+import { Home } from './components/Home/Home';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <MarvelCharacterStateProvider>
-        <CharacterListing />
+         <Home />
       </MarvelCharacterStateProvider>
     </div>
   );

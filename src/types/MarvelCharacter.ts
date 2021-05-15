@@ -2,6 +2,7 @@ export type MarvelCharacter = {
     id: number; 
     name: string; 
     description: string; 
+    modified?: string; 
     thumbnail: {
         path: string; 
         extension: string;         
@@ -10,7 +11,7 @@ export type MarvelCharacter = {
     comics: MarvelResourceCollection;
     series: MarvelResourceCollection;
     stories: MarvelStoryResourceCollection; 
-    events: MarvelStoryResourceCollection; 
+    events: MarvelResourceCollection; 
     urls: Array<MarvelUrl>;
 }
 
