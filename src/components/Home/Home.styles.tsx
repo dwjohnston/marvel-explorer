@@ -18,8 +18,12 @@ export const StyledHome = styled.div`
 
 
 ${MEDIA_QUERY_IS_DESKTOP} {
-    display: flex; 
-    flex-flow: row nowrap; 
+
+    >div {
+        display: flex; 
+        flex-flow: row nowrap; 
+    }
+
 
     .dj-marvel-selected-character-panel {
         display: block;

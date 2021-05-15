@@ -22,15 +22,15 @@ function parsePayload (data: unknown) : MarvelRequestResult<unknown> {
     return data as MarvelRequestResult<unknown>; 
 }
 
-function parseCharacters (data: MarvelRequestResult<unknown>) : Array<MarvelCharacter> {
+function parseCharacters (data: MarvelRequestResult<unknown>) : MarvelRequestResult<MarvelCharacter> {
     
     // Here we have the opportunity to check that the payload result is what we're actually expecting, before we coerce the type
-    return data.data.results as Array<MarvelCharacter>;
+    return data as MarvelRequestResult<MarvelCharacter>;
 }
 
-export async function fetchCharacters(offset = 0): Promise<Array<MarvelCharacter>> {
+export async function fetchCharacters(offset = 0): Promise<MarvelRequestResult<MarvelCharacter>> {
 
-    const res = await fetch(`${REACT_APP_MARVEL_API_PATH}/characters?apikey=${REACT_APP_PUBLIC_KEY}&ts=${REACT_APP_TS}&hash=${REACT_APP_HASH}`, {
+    const res = await fetch(`${REACT_APP_MARVEL_API_PATH}/characters?apikey=${REACT_APP_PUBLIC_KEY}&ts=${REACT_APP_TS}&hash=${REACT_APP_HASH}&offset=${offset}`, {
 
         method: "GET", 
         mode: "cors",

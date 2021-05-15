@@ -1,4 +1,5 @@
 import React from 'react';
+import { Attribution } from '../Attribution/Attribution';
 import { CharacterListing } from '../ChararcterListing/CharacterListing';
 import { useMarvelCharacterState } from '../Providers/MarvelStateProvider';
 import { SelectedCharacterPanel } from '../SelectedCharacterPanel/SelectedCharacterPanel';
@@ -13,7 +14,11 @@ export const Home = (props: HomeProps) => {
 
     const {selectedCharacter} = useMarvelCharacterState();
     return <StyledHome>
+        <div>
         <CharacterListing className = {!!selectedCharacter ? "character-selected" : ''}/>
         <SelectedCharacterPanel className = {!!selectedCharacter ? "character-selected" : ''}/>
+        </div>
+        <Attribution />
+
     </StyledHome   >;
 };

@@ -8,12 +8,12 @@ type MarvelCharacterState = {
 }
 
 const MarvelCharacterStateContext = React.createContext<{
-    characters: MarvelCharacterState;
+    characters: Array<MarvelCharacter>;
     addCharacters: (characters: Array<MarvelCharacter>) => void;
     selectedCharacter: MarvelCharacter | null;
     selectCharacter: (character: MarvelCharacter | null) => void; 
 }>({
-    characters: {}, 
+    characters: [], 
     selectedCharacter: null, 
     selectCharacter: ()=> undefined, 
     addCharacters: () => undefined
@@ -25,7 +25,9 @@ export const MarvelCharacterStateProvider = (props: React.PropsWithChildren<{}>)
         children
     } = props;
 
-    const [state, setState] = React.useState<MarvelCharacterState>({}); 
+    // Not actually using this one, but if you needed to access a character by id, you would use this. 
+    const [characterIndex, setCharacterIndex] = React.useState<MarvelCharacterState>({}); 
+    const [characterList, setCharacterList ] = React.useState<Array<MarvelCharacter>>([]);
     const [selectedCharacter, setSelectedCharacter] = React.useState<MarvelCharacter |null>(null);
 
     const handleSelectCharacter = (character: MarvelCharacter | null) => {
@@ -40,14 +42,17 @@ export const MarvelCharacterStateProvider = (props: React.PropsWithChildren<{}>)
                 ...acc, 
                 [cur.id] : cur
             }
-        }, state); 
+        }, characterIndex); 
 
-        setState(newState);
+        const newList = [...characterList, ...characters]; 
+
+        setCharacterIndex(newState);
+        setCharacterList(newList);
     }
 
     return <MarvelCharacterStateContext.Provider value = {
         {
-            characters: state, 
+            characters: characterList, 
             addCharacters: handleAddCharacters, 
             selectCharacter: handleSelectCharacter, 
             selectedCharacter

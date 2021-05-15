@@ -55,6 +55,7 @@ export type MarvelResource = {
 
 
 
+
 export type MarvelRequestResult<T> = {
     code: number; 
     status: string; 
