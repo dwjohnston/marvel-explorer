@@ -4,7 +4,8 @@ import {  CharacterCard } from './CharacterCard';
 export const Default = () => {
   return (
     <>
-      <CharacterCard 
+      <CharacterCard
+      onClick  = {() => undefined} 
       character ={{
         "id": 1011334,
         "name": "3-D Man",

@@ -4,16 +4,14 @@ import { StyledCharacterCard } from './CharacterCard.styles';
 
 export type CharacterCardProps = {
     character: MarvelCharacter;
+    onClick: () => void; 
 }
 
 export const CharacterCard = (props: CharacterCardProps) => {
-  const {character} = props;
+  const {character, onClick} = props;
 
-  const handleClick = () => {
 
-  }; 
-
-  return <StyledCharacterCard role ="button" onClick = {handleClick}>
+  return <StyledCharacterCard role ="button" onClick = {onClick}>
     <div className ="img-container">
     <img src = {`${character.thumbnail.path}/portrait_incredible.${character.thumbnail.extension}`} alt = {character.name}/>
     </div>

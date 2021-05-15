@@ -7,13 +7,13 @@ import { useMarvelCharacterState } from '../Providers/MarvelStateProvider';
 import { StyledCharacterListing } from './CharacterListing.style';
 
 export type CharacterListingProps = {
-
+    className? : string; 
 }
 
 export const CharacterListing = (props: CharacterListingProps) => {
-    const { } = props;
+    const {className =''} = props;
 
-    const { addCharacters, characters } = useMarvelCharacterState();
+    const { addCharacters, characters, selectCharacter } = useMarvelCharacterState();
 
     useAsyncEffect(async () => {
         const characters = await fetchCharacters();
@@ -23,12 +23,16 @@ export const CharacterListing = (props: CharacterListingProps) => {
 
     }, []);
 
-    return <StyledCharacterListing>
+    return <StyledCharacterListing className={`dj-marvel-character-listing ${className}`}>
 
-        {Object.values(characters).map((v) => <CharacterCard key={v.id}
-            character={v}
-        />
-        )}
+        <div className="listing-container">
+            {Object.values(characters).map((v) => <CharacterCard key={v.id}
+                onClick={() => selectCharacter(v)}
+                character={v}
+            />
+            )}
+
+        </div>
 
 
         <Attribution />

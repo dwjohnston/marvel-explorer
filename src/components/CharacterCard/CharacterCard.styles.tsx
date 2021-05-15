@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLOR_BLACK, COLOR_WHITE, MEDIA_QUERY_IS_DESKTOP } from '../../theme/theme';
+import { COLOR_BLACK, COLOR_RED, COLOR_WHITE, COLOR_WHITE_2, MEDIA_QUERY_IS_DESKTOP } from '../../theme/theme';
 
 export const StyledCharacterCard = styled.div`
 
@@ -10,16 +10,16 @@ export const StyledCharacterCard = styled.div`
     width: 200px; 
 
     ${MEDIA_QUERY_IS_DESKTOP} {
-        width: 300px;
+        width: 200px;
     }
 
     img {
         max-width: 100%;
     }
 
-    background: linear-gradient(to bottom right, ${COLOR_BLACK} 95%, transparent 95%);
-    color: ${COLOR_WHITE};
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    background: linear-gradient(to bottom right, ${COLOR_BLACK} 95%, ${COLOR_RED} 95%);
+    color: ${COLOR_WHITE_2};
+    box-shadow: 0 2px 4px ${COLOR_RED};
 
 
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -45,7 +45,7 @@ export const StyledCharacterCard = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px ${COLOR_RED};
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     }

@@ -10,8 +10,12 @@ type MarvelCharacterState = {
 const MarvelCharacterStateContext = React.createContext<{
     characters: MarvelCharacterState;
     addCharacters: (characters: Array<MarvelCharacter>) => void;
+    selectedCharacter: MarvelCharacter | null;
+    selectCharacter: (character: MarvelCharacter | null) => void; 
 }>({
     characters: {}, 
+    selectedCharacter: null, 
+    selectCharacter: ()=> undefined, 
     addCharacters: () => undefined
 });
 
@@ -22,6 +26,12 @@ export const MarvelCharacterStateProvider = (props: React.PropsWithChildren<{}>)
     } = props;
 
     const [state, setState] = React.useState<MarvelCharacterState>({}); 
+    const [selectedCharacter, setSelectedCharacter] = React.useState<MarvelCharacter |null>(null);
+
+    const handleSelectCharacter = (character: MarvelCharacter | null) => {
+        setSelectedCharacter(character);
+    }
+
 
     const handleAddCharacters = (characters: Array<MarvelCharacter>) => {
      
@@ -38,7 +48,9 @@ export const MarvelCharacterStateProvider = (props: React.PropsWithChildren<{}>)
     return <MarvelCharacterStateContext.Provider value = {
         {
             characters: state, 
-            addCharacters: handleAddCharacters
+            addCharacters: handleAddCharacters, 
+            selectCharacter: handleSelectCharacter, 
+            selectedCharacter
         }
     } >
         {children}
