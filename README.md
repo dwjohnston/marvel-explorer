@@ -63,9 +63,9 @@ These demonstrate the use of RTL + UserEvent to:
 
 ## Authorization and CORS
 
-The authorization and CORS set up is actually a bit tricky, particularly in regard to local development.
+The authorization set up is actually a bit tricky, particularly in regard to local development.
 
-It's actually quite an interesting topic - and I feel like there's a better solution than I've what I've done here.
+It's actually quite an interesting topic - and I'm curious what other organisations do with regards local development for this kind of thing. 
 
 In this section I'll talk a bit about how I've come to set the code up this way.
 
@@ -105,7 +105,7 @@ Luckly create-react-app has some safety around environment variables - only env 
 
 The tidiest solution I can see is to use a browser extension like [Referer Control for Chrome](https://chrome.google.com/webstore/detail/referer-control/hnkcfpcejkafcihlgbojoidoihckciin), and use get https://localhost:3000  to be modified to be https://example.com (for example).
 
-I think in a real world setting, this is the best solution. However for the purposes of this exercise, I'll keep with option 2 as - I dont' want to tell me 'you have to install this extension to get this work' - even though that is what you would do in a workplace. 
+I think in a real world setting, this is the best solution. However for the purposes of this exercise, I'll keep with option 2 as - I dont' want to tell people 'you have to install this extension to get this work' - even though that is what you would do in a workplace. 
 
 ## Design
 
