@@ -151,6 +151,5 @@ https://github.com/storybookjs/storybook/issues/5183
 
 - No search/filtering
 - No loading spinner.
-- Skip preflight check needs to be sorted out.
 - I'm not really a fan of the layout. Probably better to have a fixed layout + grid (ie. stop the side panel from scrolling away).
 - Certainly there's a lot more polish that can be done. But as it is, I've spent a day on this and I think it demonstrates the breadth of ability and thought that you're looking for.
