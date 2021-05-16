@@ -61,7 +61,7 @@ These demonstrate the use of RTL + UserEvent to:
 - Mock service functions
 - Respond to user events.
 
-## Authorization and CORS
+## Authorization
 
 The authorization set up is actually a bit tricky, particularly in regard to local development.
 
