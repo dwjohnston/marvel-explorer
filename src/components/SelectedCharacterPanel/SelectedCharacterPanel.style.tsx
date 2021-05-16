@@ -1,5 +1,12 @@
-import styled from 'styled-components';
-import { COLOR_BLACK, COLOR_BLACK_2, COLOR_RED, COLOR_WHITE, COLOR_WHITE_2, MEDIA_QUERY_IS_DESKTOP } from '../../theme/theme';
+import styled from "styled-components";
+import {
+  COLOR_BLACK,
+  COLOR_BLACK_2,
+  COLOR_RED,
+  COLOR_WHITE,
+  COLOR_WHITE_2,
+  MEDIA_QUERY_IS_DESKTOP,
+} from "../../theme/theme";
 
 export const StyledSelectedCharacterPanel = styled.div`
     background-color: ${COLOR_RED};

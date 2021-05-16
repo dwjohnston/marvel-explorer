@@ -1,5 +1,5 @@
-import React from 'react';
-import {  CharacterCardOld } from './CharacterCardOld';
+import React from "react";
+import { CharacterCardOld } from "./CharacterCardOld";
 
 export const Default = () => {
   return (
@@ -11,7 +11,6 @@ export const Default = () => {
 
 export default {
   component: CharacterCardOld,
-  title: 'Components/CharacterCardOld',
-  parameters: {
-  },
+  title: "Components/CharacterCardOld",
+  parameters: {},
 };

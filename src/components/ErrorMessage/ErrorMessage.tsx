@@ -1,15 +1,15 @@
-
-
-import React from 'react';
-import { StyledErrorMessage } from './ErrorMessage.styles';
+import React from "react";
+import { StyledErrorMessage } from "./ErrorMessage.styles";
 
 export type ErrorMessageProps = {
-    error?: Error | null;
-}
+  error?: Error | null;
+};
 
 export const ErrorMessage = (props: ErrorMessageProps) => {
-    const { error, } = props;
-    return error ? <StyledErrorMessage>
-        We're sorry, something went wrong. :(
-    </StyledErrorMessage> : null;
+  const { error } = props;
+  return error ? (
+    <StyledErrorMessage>
+      We're sorry, something went wrong. :(
+    </StyledErrorMessage>
+  ) : null;
 };

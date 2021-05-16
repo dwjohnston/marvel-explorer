@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { COLOR_RED, COLOR_WHITE } from '../../theme/theme';
+import styled from "styled-components";
+import { COLOR_RED, COLOR_WHITE } from "../../theme/theme";
 
 export const StyledAttribution = styled.div`
     background-color: ${COLOR_RED}; 

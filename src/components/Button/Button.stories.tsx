@@ -1,22 +1,23 @@
-import React from 'react';
-import { COLOR_BLACK_2 } from '../../theme/theme';
-import { Button } from './Button';
+import React from "react";
+import { COLOR_BLACK_2 } from "../../theme/theme";
+import { Button } from "./Button";
 
 export const Default = () => {
   return (
+    <div
+      style={{
+        backgroundColor: COLOR_BLACK_2,
 
-    <div style ={{backgroundColor: COLOR_BLACK_2,
-    
-    padding: "50px 0"}}
+        padding: "50px 0",
+      }}
     >
-      <Button label = "I am a button" onClick = {() => undefined}/>
-      </div>
+      <Button label="I am a button" onClick={() => undefined} />
+    </div>
   );
 };
 
 export default {
   component: Button,
-  title: 'Components/Button',
-  parameters: {
-  },
+  title: "Components/Button",
+  parameters: {},
 };
