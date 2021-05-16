@@ -61,6 +61,16 @@ These demonstrate the use of RTL + UserEvent to:
 - Mock service functions
 - Respond to user events.
 
+My writing of tests here:  does reflect how I would approach a similar real world project - (ie. building something from scratch): 
+
+1. Just getting the prototype up as quickly as possible
+2. For tricky little parsing or transformation functions I'll usually write the test at the time, as that's the quickest way to test it. 
+3. Once I'm happy with how the whole thing is generally working, then I'll start putting in tests - going for the most important functionality first. 
+4. Often writing these tests will neccesitate a refactor - in this case the `ServiceFunctionContextProvider` arose out the desire to making testing easier. 
+5. From there, write tests as an example of how to write tests for others working on the codebase, write tests as defects are discovered, write tests as new functionality is added. 
+
+
+
 ## Authorization
 
 The authorization set up is actually a bit tricky, particularly in regard to local development.
