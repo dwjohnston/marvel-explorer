@@ -4,6 +4,7 @@ import { COLOR_BLACK, COLOR_BLACK_2, COLOR_RED, COLOR_WHITE, COLOR_WHITE_2, MEDI
 export const StyledSelectedCharacterPanel = styled.div`
     background-color: ${COLOR_RED};
     position: relative; 
+    padding:2em;
 
 
     img {
@@ -16,6 +17,9 @@ export const StyledSelectedCharacterPanel = styled.div`
         
     }
 
+    h2 {
+        text-align: center; 
+    }
     button {
         color: white; 
         border solid 1px white; 

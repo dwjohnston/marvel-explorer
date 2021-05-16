@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import useAsyncEffect from 'use-async-effect';
-import { fetchCharacters } from '../../serviceFunctions/fetchCharacters';
 import { getLargestImage } from '../../utils/getMarvelImage';
-import { Attribution } from '../Attribution/Attribution';
 import { Button } from '../Button/Button';
 import { CharacterCard } from '../CharacterCard/CharacterCard';
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { useMarvelCharacterState } from '../Providers/MarvelStateProvider';
+import { useFetchCharacters } from '../Providers/ServiceFunctionProvider';
 import { StyledCharacterListing } from './CharacterListing.style';
 
 export type CharacterListingProps = {
@@ -18,18 +18,27 @@ export const CharacterListing = (props: CharacterListingProps) => {
     const { addCharacters, characters, selectCharacter } = useMarvelCharacterState();
 
     const [requestOffset, setRequestOffset] = useState(0);
+    const fetchCharacters = useFetchCharacters();
+
+    const [error, setError] = useState<Error | null>(null);
 
     useAsyncEffect(async () => {
-        loadMoreCharacters();
+        await loadMoreCharacters();
     }, []);
 
 
     const loadMoreCharacters = async () => {
-        const result = await fetchCharacters(requestOffset); 
-        const characters = result.data.results;
 
-        addCharacters(characters);
-        setRequestOffset(result.data.offset + result.data.count);
+        try {
+            const result = await fetchCharacters(requestOffset); 
+            const charactersResult = result.data.results;
+      
+            addCharacters(charactersResult);
+            setRequestOffset(result.data.offset + result.data.count);
+        } catch(err) {
+              setError(err);
+        }
+
     }
 
 
@@ -42,7 +51,7 @@ export const CharacterListing = (props: CharacterListingProps) => {
     });
 
     return <StyledCharacterListing className={`dj-marvel-character-listing ${className}`}>
-
+        <ErrorMessage error ={error}/>
         <div className="listing-container">
             {charactersToUse.map((v) => <CharacterCard key={v.id}
                 onClick={() => selectCharacter(v)}

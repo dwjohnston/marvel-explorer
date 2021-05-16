@@ -18,8 +18,6 @@ const AppearsIn = (props: {
 
   const {items} = collection;
 
-  console.log(collection);
-
   //nb. Pagination for characters that appear in lots of comics/events etc is not done, and only the first 20 will be shown
 
   return <div className="appears-in">

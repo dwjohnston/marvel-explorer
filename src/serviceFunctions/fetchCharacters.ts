@@ -4,10 +4,11 @@ const {
     REACT_APP_PUBLIC_KEY,
     REACT_APP_HASH,
     REACT_APP_MARVEL_API_PATH, 
-    REACT_APP_TS
+    REACT_APP_TS, 
+    NODE_ENV
 } = process.env;
 
-if (!REACT_APP_HASH || !REACT_APP_PUBLIC_KEY || !REACT_APP_MARVEL_API_PATH || !REACT_APP_TS) {
+if (NODE_ENV !== "test" && (!REACT_APP_HASH || !REACT_APP_PUBLIC_KEY || !REACT_APP_MARVEL_API_PATH || !REACT_APP_TS)) {
     console.error({    REACT_APP_PUBLIC_KEY,
         REACT_APP_HASH,
         REACT_APP_MARVEL_API_PATH, 
@@ -44,11 +45,7 @@ export async function fetchCharacters(offset = 0): Promise<MarvelRequestResult<M
         throw new Error(res.statusText);
     }
 
-    console.log(res);
-
     const json = await res.json();
-
-console.log(json);
 
     const payload = parsePayload(json); 
     const characters = parseCharacters(payload);

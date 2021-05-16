@@ -10,6 +10,10 @@ Project Scaffolded with Create React App.
 2. Copy the `.env.tempalte` file to `.env.local` and enter the keys there. 
 3. `yarn`
 4. `yarn start`
+5. Visit: https://cors-anywhere.herokuapp.com/corsdemo and press the button*
+6. Reload page.
+
+*Yes this seems complicated. See the Authorization section below. 
 
 ## General Structure and Features 
 
@@ -23,9 +27,11 @@ The service function retrieves the data and coerces the type.
 
 - nb. A good thing to add is type validation functions. I've used this package and Iit works quite well. https://www.npmjs.com/package/ts-interface-checker 
 
+The service functions are provided to the application via React context. This allows for easy mocking of the service functions in tests. 
+
 ### Theme 
 
-Ordinarily I would use a framework like Material-UI, in the absense of that, refer to all theming in a single file. 
+Ordinarily I would use a framework like Material-UI, and in the absence of that, refer to all theming in a single file. 
 
 ### State
 
@@ -33,20 +39,31 @@ These days I'm tending toward just using Context for state management, which is 
 
 All state providers should be in the `Providers` folder. 
 
-
 ### Storybook
 
 Storybook is easy enough to set up, so you might as well use it. 
 
+Note that I haven't gone out of my way to create stories for every component I created. I just created stories that were useful for me at the time. 
+
 ### Environment variables 
 
 See the `.env.template` file to see what environment variables you need.
+
 
 ### Frontend Only 
 
 I have't got this deployed anywhere, have set this up such that it runs on my own machine. 
 
 Other than having to get Marvel API keys, anyone using this code shouldn't need to set up any other accounts etc. 
+
+### Tests
+
+I've written two component tests (Home and CharacterListing). 
+
+These demonstrate the use of RTL + UserEvent to: 
+
+- Mock service functions
+- Respond to user events. 
 
 ## Authorization and CORS
 
@@ -77,7 +94,11 @@ An alternative, is that you proxy all your requests via a simple remote server, 
 
 This isn't the clientside solution though - you will still need to provide the public + private hash. 
 
-This is solution I've gone for - I'm using https://cors-anywhere.herokuapp.com/ to achieve this. 
+#### Use of cors-anywhere service. 
+
+I've used https://cors-anywhere.herokuapp.com/ as a proxy. 
+
+In the 'real world' we could implement our own simple proxy - however for easy of 'just get it running on your own machine' I've opted to use a proxy that exists publicly. 
 
 **nb. This service shouldn't be used for any serious data! They can read all of it!**
 
@@ -123,13 +144,21 @@ My use of classNames is very much inspired by Material-UI:
 - Each component also has an optional `className` prop which is added to that root class. This allow specific targetting, for example to add things like 'is-selected' from a parent. 
 
 
+### Misc
+
+I've just set SKIP_PREFLIGHT_CHECK=true because of this open issue: 
+
+https://github.com/storybookjs/storybook/issues/5183
+
+
 
 ## Stuff I didn't do
 
 - No search/filtering
 - No loading spinner. 
-- There's a bunch of tidy up stuff you could do - Fix those 'See Also' links. 
 - Skip preflight check needs to be sorted out. 
+- I'm not really a fan of the layout. Probably better to have a fixed layout + grid (ie. stop the side panel from scrolling away).
+- Certainly there's a lot more polish that can be done. But as it is, I've spent a day on this and I think it demonstrates the breadth of ability and thought that you're looking for. 
 
 
 

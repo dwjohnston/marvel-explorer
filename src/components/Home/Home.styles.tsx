@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MEDIA_QUERY_IS_DESKTOP } from '../../theme/theme';
+import { COLOR_BLACK, MEDIA_QUERY_IS_DESKTOP } from '../../theme/theme';
 
 export const StyledHome = styled.div`
  
@@ -10,7 +10,9 @@ export const StyledHome = styled.div`
     top:0;
     right:0;
     bottom:0;
-    overflow:auto;
+    overflow-y:auto;
+
+    background-color: ${COLOR_BLACK};
 
     display: flex; 
     flex-flow: column nowrap; 
