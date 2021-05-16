@@ -7,13 +7,10 @@ Project Scaffolded with Create React App.
 ## Get the code running
 
 1. Go to developer.marvel.com and create an account and get API keys
-2. Copy the `.env.tempalte` file to `.env.local` and enter the keys there.
+2. Copy the `.env.template` file to `.env.local` and enter the keys there.
 3. `yarn`
 4. `yarn start`
-5. Visit: https://cors-anywhere.herokuapp.com/corsdemo and press the button\*
 6. Reload page.
-
-\*Yes this seems complicated. See the Authorization section below.
 
 ## General Structure and Features
 
@@ -80,36 +77,35 @@ Marvel has two ways of authorizing a request.
 2. For any clientside request, providing the public key only suffices, however the request must referred by a domain that you have whitelisted in your Marvel account.
 
 This second problem poses a problem for local development - Marvel's API will refuse to authorize a request that referred by 'localhost:3000'.
-
-This article provides a good summary of options for dealing with CORS issues generally: https://medium.com/swlh/avoiding-cors-errors-on-localhost-in-2020-5a656ed8cefa
-
 ### Solution 1 - How it would work in production
 
 So the ordinary solution to this, and what will work in a production deployment, is that so long as your SPA is served up by remote server (which of course is always going to be the case) then a referer header will be there, and no problems, just add that referrer to the whitelist and provide the public key.
 
 However, for development, this isn't really practical - you usually want a live reload on your own machine.
 
-### Solution 2 - Route requests via proxy.
+### Solution 2 - Make requests as if you were a server. 
 
-An alternative, is that you proxy all your requests via a simple remote server, than passes the requests to the Marvel API.
+This is the solution I've gone for here, but it's not really the right one - we shouldn't need to be signing with the private key for a clientside app. 
 
-This isn't the clientside solution though - you will still need to provide the public + private hash.
+Basically it involves passing the ts+private+public hash, and then the Marvel API will authenticate you as if you were a server. 
 
-#### Use of cors-anywhere service.
+The solution that you proxy all your requests via a simple remote server, than passes the requests to the Marvel API.
 
-I've used https://cors-anywhere.herokuapp.com/ as a proxy.
 
-In the 'real world' we could implement our own simple proxy - however for easy of 'just get it running on your own machine' I've opted to use a proxy that exists publicly.
-
-**nb. This service shouldn't be used for any serious data! They can read all of it!**
-
-### Hiding your private key
+#### Hiding your private key
 
 So how do you use the private key in your frontend application, without exposing it?
 
 Basically _you can't refer to the private key as an environment variable directly_ the ts+private+public key needs to be hashed _before_ the code is bundled, and that's the environment variable you can safely pass in.
 
 Luckly create-react-app has some safety around environment variables - only env vars prefixed with REACT_APP will be exposed.
+
+
+### Solution 3 - Use a browser extention to modify your referer header. 
+
+The tidiest solution I can see is to use a browser extension like [Referer Control for Chrome](https://chrome.google.com/webstore/detail/referer-control/hnkcfpcejkafcihlgbojoidoihckciin), and use get https://localhost:3000  to be modified to be https://example.com (for example).
+
+I think in a real world setting, this is the best solution. However for the purposes of this exercise, I'll keep with option 2 as - I dont' want to tell me 'you have to install this extension to get this work' - even though that is what you would do in a workplace. 
 
 ## Design
 
